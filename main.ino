@@ -29,13 +29,13 @@ void setup()
 
 void drive()
 {
-	bool driving = True;
+	bool driving = true;
     while(driving)
     {
     	x_value = analogRead(stick_x);
       	y_value = analogread(stick_y);
       	
-      	if(y_value > 512 && speed =< 255) // nach vorne fahren
+      	if(y_value > 512 && speed <= 255) // nach vorne fahren
         {
         	speed++;
             delay(10);
@@ -45,10 +45,10 @@ void drive()
             motor2.run(FORWARD);
         }
 
-        if(y_value > 512 && speed =< 80)  //rückwärts fahren
+        if(y_value > 512 && speed <= 80)  //rückwärts fahren
         {
             speed = 0;
-            spped++;
+            speed++;
             delay(20);
             motor1.setSpeed(speed);
             motor1.run(BACKWARD);
