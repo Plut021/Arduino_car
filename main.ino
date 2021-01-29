@@ -27,7 +27,7 @@ void setup()
     servo2.write(90); 
 }
 
-void drive()
+void drive()// fortbewegung des fahrzeugs
 {
 	bool driving = true;
     while(driving)
