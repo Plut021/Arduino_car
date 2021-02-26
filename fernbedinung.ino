@@ -1,5 +1,8 @@
 #include <IRremote>;
 
-int frequeze = 30;
+int FREQUENZE = 30;
 int IR_RECIVE_PIN = 10;
-int 
+
+uint16_t sAdress = 0x102;
+uint8_t /* asign in funktion
+
