@@ -45,13 +45,12 @@ void sending (){
     
     String komplett = x_pos + y_pos;
     komplett_hex = String(komplett.toInt(), HEX);
-    msg_hex = uint8_t komplett_hex;
-    Serial.println(msg_hex);
+    msg_hex = komplett_hex.toInt();
 
     
 
     
-    IrSender.sendRC5(ADRESS, komplett_hex, REPEATS);
+    IrSender.sendRC5(ADRESS, msg_hex, REPEATS);
 }
 
 void setup(){
@@ -66,3 +65,4 @@ void loop() {
     Serial.println("sending done");
     
 }
+
