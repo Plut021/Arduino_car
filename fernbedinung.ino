@@ -46,7 +46,7 @@ void sending (){
     String komplett = x_pos + y_pos;
     komplett_hex = String(komplett.toInt(), HEX);
     msg_hex = komplett_hex.toInt();
-
+    Serial.println(msg_hex);
     
 
     
