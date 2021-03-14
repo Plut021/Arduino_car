@@ -1,6 +1,6 @@
 #include <IRremote.h>
 
-int IR_RECIVE_PIN = 10;
+int IR_RECIVE_PIN = 11;
 IRrecv irrecv(IR_RECIVE_PIN);
 decode_results results;
 
