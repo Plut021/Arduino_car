@@ -125,7 +125,7 @@ void sending2(){
 }
 
 void setup(){
-    IrSender.begin(IR_SEND);
+    IrSender.begin(IR_SEND,false);
     Serial.begin(9600);
 
 }
