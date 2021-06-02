@@ -10,12 +10,15 @@ uint8_t command;
 
 
 
-const uint16_t ADRESS = 0x102;
+const uint16_t ADRESS = 0x102; 
 const uint8_t REPEATS = 0;
 
 
 void sending2(){
     /* 
+     *  funktion sendet je nach position des Sticks
+     *  einen bestimmten Befehl der dann vom Auto in 
+     *  eine Bewgung umgewandelt
      *  0x1 langsam vorwärts
      *  0x2 schnell vorwärts
      *  0x3 leicht links lenken vorwärts
