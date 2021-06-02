@@ -14,7 +14,6 @@ const uint16_t ADRESS = 0x102;
 const uint8_t REPEATS = 0;
 
 
-//wenn direkte werte übertragungs probleme verursachen 
 void sending2(){
     /* 
      *  0x1 langsam vorwärts
