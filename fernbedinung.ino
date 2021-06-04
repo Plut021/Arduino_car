@@ -19,6 +19,7 @@ void sending2(){
      *  funktion sendet je nach position des Sticks
      *  einen bestimmten Befehl der dann vom Auto in 
      *  eine Bewgung umgewandelt
+     *  0x0 stopp
      *  0x1 langsam vorwärts
      *  0x2 schnell vorwärts
      *  0x3 leicht links lenken vorwärts
@@ -33,7 +34,10 @@ void sending2(){
      *  0x12 langsam rückwärts
      */
     x_val = analogRead(STICK_X);
-    y_val = analogRead(STICK_Y);    
+    y_val = analogRead(STICK_Y);
+    if (600 > x_val > 400 && 600 > y_val > 400){
+        command = 0x0
+    }
     if(900 > x_val > 600 && 400 < y_val < 600){
         command = 0x1;
     }
@@ -42,7 +46,7 @@ void sending2(){
         command = 0x2;
     }
 
-    else if(250 < y_val < 400 && x_val < 511){
+    else if(250 < y_val < 400 && x_val < 400){
         command = 0x3;
     }
 
