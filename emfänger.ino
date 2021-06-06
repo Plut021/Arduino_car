@@ -91,24 +91,20 @@ int empfangen(){
                 bewegung[0] = -120;
                 bewegung[1] = 0;
                 break;
-
-
-    
-      return bewegung; 
-
-      }
+        }
+        irrecv.resume();
     }
+    return bewegung; 
 }
 
 
 void loop(){
-    if (irrecv.decode()){
+    //if (irrecv.decode()){
         // irrecv.printIRResultShort(&Serial);
-        Serial.println(irrecv.decodedIRData.command);
-        irrecv.resume();
-    }
+        //Serial.println(irrecv.decodedIRData.command);
+        //irrecv.resume();
+    
+    //}
+    Serial.println(empfangen())
+    delay(50)
 }
-
-
-
-
