@@ -5,13 +5,20 @@ const int IR_SEND = 3;
 const int STICK_X = A0;
 const int STICK_Y = A1;
 const int STICK_TASTER = 2;
+
+//Speichert die Position des Sticks 
 int x_val;
 int y_val;
-uint8_t command;
+uint8_t command; // Speichert den Befhl je nach Stickposition 
+//uint8_t steht für eine Positive Ganzzahl im bereich von 0 bis 255 das 
+//u steht für unsigned d.h alle zahlen die gespeichert werden können sind positiv
+//das 8_t steht für eine größe von 8bit
 
 
-
-const uint16_t ADRESS = 0x102; 
+// Adresse wird beim Senden mitgegeben um die Quelle des Signals überprüfen zu können 
+// Überprüfung wird hier nicht verwendet, da nur von einem Sender/Fernbedinung ausgegangen wird
+// Repeats ist Stadartwert für wiederholte Sendungen wird hier nicht benötigt daher = 0
+const uint16_t ADRESS = 0x102; // kann wilkürlichfestgelegt werden
 const uint8_t REPEATS = 0;
 
 void setup(){
@@ -19,7 +26,7 @@ void setup(){
     pinMode(STICK_Y, INPUT);
     pinMode(STICK_TASTER, INPUT_PULLUP)
 
-    IrSender.begin(IR_SEND,false);
+    IrSender.begin(IR_SEND,false); //Started den Sender false steht für den status einer kontroll LED die hier nicht verwendet wird
     Serial.begin(9600);
 
 }
@@ -106,7 +113,7 @@ void sending2(){
         command = 0x13;
     }
 
-    IrSender.sendRC5(ADRESS, command, REPEATS);
+    IrSender.sendRC5(ADRESS, command, REPEATS);// Sendet einen Befehl mit dem RC5 Protokoll
 }
 
 
