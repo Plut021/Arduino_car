@@ -22,7 +22,7 @@ int value = 0;
 int max_geschw = 255;
 
 //Pins Roman
-const int IR_INPUT_PIN = A1;
+const int IR_INPUT_PIN = A3;
 const int IR_LED_PIN = 10;
 const int ECHO = 9;
 const int TRIGGER = 8;
