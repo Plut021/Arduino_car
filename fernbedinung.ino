@@ -4,7 +4,7 @@
 const int IR_SEND = 3;
 const int STICK_X = A0;
 const int STICK_Y = A1;
-const int STICK_TASTER = 2;
+const int STICK_TASTER = 7;
 
 //Speichert die Position des Sticks 
 int x_val;
@@ -25,7 +25,7 @@ void setup(){
     pinMode(STICK_X, INPUT);
     pinMode(STICK_Y, INPUT);
     pinMode(STICK_TASTER, INPUT_PULLUP);
-
+  
     IrSender.begin(IR_SEND,false); //Started den Sender false steht für den status einer kontroll LED die hier nicht verwendet wird
     Serial.begin(9600);
 
@@ -57,6 +57,7 @@ void sending2(){
     y_val = analogRead(STICK_Y);
     // Wenn der Stick nicht hinenigedrückt wird der Befehl für die jeweilige Position des Sticks gesendet
     // Wenn der Stick gedrückt wird wird der Befehl zum einParken gesendet
+    if(digitalRead(STICK_TASTER)==1){
         if (x_val > 400 && y_val > 400 && x_val < 600 && y_val < 600){
             command = 0x0;
         }
@@ -107,8 +108,10 @@ void sending2(){
         else if(x_val < 250 && 400 < y_val < 600){
             command = 0x12;
         }
-
-    Serial.println(command);
+    }
+    else{
+      command = 0x13;
+    }
     IrSender.sendRC5(ADRESS, command, REPEATS);// Sendet einen Befehl mit dem RC5 Protokoll
 }
 
@@ -117,5 +120,6 @@ void loop() {
     sending2();
     delay(1000);
     Serial.println("sending done");
+    Serial.println(command);
     
 }
