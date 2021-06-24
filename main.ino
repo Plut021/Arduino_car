@@ -52,7 +52,7 @@ Servo servo_l;
 
 
 //Pins Jonathan 
-const int IR_RECIVE_PIN = 11;
+const int IR_RECIVE_PIN = 3;
 int command;
 IRrecv irrecv(IR_RECIVE_PIN); // legt fest an welchem pin das Singnal des Empfängers eingeht
 decode_results results;
