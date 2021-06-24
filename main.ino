@@ -324,7 +324,7 @@ void empfangen(){
                 bewegung[1] = 0;
                 break; 
             case 1:
-                bewegung[0] = 100;
+                bewegung[0] = 200;
                 bewegung[1] = 0;
                 break;
             case 2:
@@ -332,43 +332,43 @@ void empfangen(){
                 bewegung[1] = 0;
                 break;
             case 3:
-                bewegung[0] = 100;
+                bewegung[0] = 200;
                 bewegung[1] = -20;
                 break;
             case 4:
-                bewegung[0] = 100;
+                bewegung[0] = 2000;
                 bewegung[1] = -45;
                 break;
             case 5:
-                bewegung[0] = -60;
+                bewegung[0] = -200;
                 bewegung[1] = -20;
                 break;
             case 6:
-                bewegung[0] = -60;
+                bewegung[0] = -200;
                 bewegung[1] = -45;
                 break;
             case 7:
-                bewegung[0] = 100;
+                bewegung[0] = 200;
                 bewegung[1] = 20;
                 break;
             case 8:
-                bewegung[0] = 100;
+                bewegung[0] = 200;
                 bewegung[1] = 45;
                 break;
             case 9:
-                bewegung[0] = -60;
+                bewegung[0] = -200;
                 bewegung[1] = 20;
                 break;
             case 16:
-                bewegung[0] = -60;
+                bewegung[0] = -200;
                 bewegung[1] = 45;
                 break;
             case 17:
-                bewegung[0] = -60;
+                bewegung[0] = -200;
                 bewegung[1] = 0;
                 break;
             case 18:
-                bewegung[0] = -120;
+                bewegung[0] = -255;
                 bewegung[1] = 0;
                 break;
             case 19:
