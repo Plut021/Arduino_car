@@ -24,7 +24,7 @@ const uint8_t REPEATS = 0;
 void setup(){
     pinMode(STICK_X, INPUT);
     pinMode(STICK_Y, INPUT);
-    pinMode(STICK_TASTER, INPUT_PULLUP)
+    pinMode(STICK_TASTER, INPUT_PULLUP);
 
     IrSender.begin(IR_SEND,false); //Started den Sender false steht für den status einer kontroll LED die hier nicht verwendet wird
     Serial.begin(9600);
@@ -57,19 +57,18 @@ void sending2(){
     y_val = analogRead(STICK_Y);
     // Wenn der Stick nicht hinenigedrückt wird der Befehl für die jeweilige Position des Sticks gesendet
     // Wenn der Stick gedrückt wird wird der Befehl zum einParken gesendet
-    if (digitalRead(STICK_TASTER) != HIGH){
-        if (600 > x_val > 400 && 600 > y_val > 400){
-            command = 0x0
+        if (x_val > 400 && y_val > 400 && x_val < 600 && y_val < 600){
+            command = 0x0;
         }
-        if(900 > x_val > 600 && 400 < y_val < 600){
+        if(x_val > 600 && y_val < 600 && x_val < 900 && y_val > 400){
             command = 0x1;
         }
         
-        else if(x_val > 900 && 400 < y_val < 600){
+        else if(x_val > 900 && y_val < 600 && y_val > 400){
             command = 0x2;
         }
 
-        else if(250 < y_val < 400 && x_val < 400){
+        else if(y_val < 400 && x_val < 400 && y_val >250){
             command = 0x3;
         }
 
@@ -77,7 +76,7 @@ void sending2(){
             command = 0x4;
         }
         
-        else if(250 < y_val < 400 && x_val > 511){
+        else if(y_val < 400 && x_val > 511 && y_val > 250){
             command = 0x5;
         }
 
@@ -85,7 +84,7 @@ void sending2(){
             command = 0x6;
         }
 
-        else if(850 > y_val > 600 && x_val < 511){
+        else if(y_val > 600 && x_val < 511 && y_val < 850){
             command = 0x7;
         }
         
@@ -93,7 +92,7 @@ void sending2(){
             command = 0x8;
         }
 
-        else if(850 > y_val > 600 && x_val > 511){
+        else if(y_val > 600 && x_val > 511 && y_val < 850){
             command = 0x9;
         }
         
@@ -101,25 +100,22 @@ void sending2(){
             command = 0x10;
         }
     
-        else if(250 < x_val < 400 && 400 < y_val < 600){
+        else if(x_val < 400 && y_val < 600 && x_val > 250 && y_val > 400){
             command = 0x11; 
         }
 
         else if(x_val < 250 && 400 < y_val < 600){
             command = 0x12;
         }
-    }
-    else {
-        command = 0x13;
-    }
 
+    Serial.println(command);
     IrSender.sendRC5(ADRESS, command, REPEATS);// Sendet einen Befehl mit dem RC5 Protokoll
 }
 
 
 void loop() {
-    sending();
-    delay(100);
+    sending2();
+    delay(1000);
     Serial.println("sending done");
     
 }
