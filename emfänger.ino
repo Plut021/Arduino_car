@@ -91,6 +91,9 @@ void empfangen(){
                 bewegung[0] = -120;
                 bewegung[1] = 0;
                 break;
+            case 19:
+                parken = true;
+                break;
         }
         irrecv.resume();
     }
