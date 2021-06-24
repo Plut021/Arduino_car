@@ -4,7 +4,7 @@ const int IR_RECIVE_PIN = 11;
 int command;
 IRrecv irrecv(IR_RECIVE_PIN);
 decode_results results;
-int bewegung[3];
+int bewegung[2];
 
 
 void setup(){
@@ -14,7 +14,7 @@ void setup(){
 
 
 
-int empfangen(){
+void empfangen(){
     
     /*  dies funktion gibt ein array mit 2 Werten,
      *  die die Richtung und Geschwindigkeit reprässentieren,
@@ -39,72 +39,74 @@ int empfangen(){
         command = irrecv.decodedIRData.command;
         
         switch (command){
-            case 0x0:
+            case 0:
                 bewegung[0] = 0;
                 bewegung[1] = 0;
                 break; 
-            case 0x1:
+            case 1:
                 bewegung[0] = 100;
                 bewegung[1] = 0;
                 break;
-            case 0x2:
+            case 2:
                 bewegung[0] = 255;
                 bewegung[1] = 0;
                 break;
-            case 0x3:
+            case 3:
                 bewegung[0] = 100;
                 bewegung[1] = -20;
                 break;
-            case 0x4:
+            case 4:
                 bewegung[0] = 100;
                 bewegung[1] = -45;
                 break;
-            case 0x5:
+            case 5:
                 bewegung[0] = -60;
                 bewegung[1] = -20;
                 break;
-            case 0x6:
+            case 6:
                 bewegung[0] = -60;
                 bewegung[1] = -45;
                 break;
-            case 0x7:
+            case 7:
                 bewegung[0] = 100;
                 bewegung[1] = 20;
                 break;
-            case 0x8:
+            case 8:
                 bewegung[0] = 100;
                 bewegung[1] = 45;
                 break;
-            case 0x9:
+            case 9:
                 bewegung[0] = -60;
                 bewegung[1] = 20;
                 break;
-            case 0x10:
+            case 16:
                 bewegung[0] = -60;
                 bewegung[1] = 45;
                 break;
-            case 0x11:
+            case 17:
                 bewegung[0] = -60;
                 bewegung[1] = 0;
                 break;
-            case 0x12:
+            case 18:
                 bewegung[0] = -120;
                 bewegung[1] = 0;
                 break;
         }
         irrecv.resume();
     }
-    return bewegung; 
+    //return bewegung; 
 }
 
 
 void loop(){
     //if (irrecv.decode()){
-        // irrecv.printIRResultShort(&Serial);
+         //irrecv.printIRResultShort(&Serial);
         //Serial.println(irrecv.decodedIRData.command);
         //irrecv.resume();
     
     //}
-    Serial.println(empfangen())
-    delay(50)
+    empfangen();
+    Serial.println(bewegung[0]);
+    Serial.println(bewegung[1]);
+    delay(50);
 }
